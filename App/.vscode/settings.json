@@ -1,0 +1,5 @@
+{
+    "go.gopath": "${workspaceFolder}\\..\\gopath",
+    "go.goroot": "${workspaceFolder}\\..\\go",
+    "go.lintOnSave": "file"
+}
