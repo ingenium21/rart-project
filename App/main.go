@@ -53,6 +53,7 @@ func main() {
 	settings := getSettings()
 
 	fmt.Println(settings)
+	fmt.Println(testHelper())
 
 	r := gin.Default()
 

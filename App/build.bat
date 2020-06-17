@@ -1,2 +1,2 @@
 SET GOPATH=%CD%\..\gopath
-..\go\bin\go.exe build -o app.exe main.go pkged.go
+..\go\bin\go.exe build -o app.exe main.go helpers.go pkged.go
