@@ -2,20 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/markbates/pkger"
 )
-
-func panicOnErr(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
 
 func getExecutable() string {
 	ex, err := os.Executable()
@@ -40,12 +32,7 @@ func portableExe() {
 // TODO: return a Settings struct
 func getSettings() string {
 	file, err := pkger.Open("/data/settings.json")
-	panicOnErr(err)
-	buf := new(strings.Builder)
-	n, err := io.Copy(buf, file)
-	_ = n
-	panicOnErr(err)
-	return buf.String()
+	return getStringFromFile(file, err)
 }
 
 func main() {
