@@ -8,8 +8,20 @@ Steps.
 ```
 clone repo
 open commandline in repo root folder
-run install.bat
+run install.bat if you haven't before
+run install_node.bat if you haven't before
+
+Go into frontend folder and run "npm run build".
+    This will allow the backend to serve the frontend
+
+For backend:
+if you updated the frontend you will need to run the pkgr.bat file again to generate updated pkged.go file
+
 Open App folder in VSCode to get Go intellisense and linting etc
+Note: You will need the index.html in the data/ folder for the app to work
+
+For frontend:
+Open frontend folder in VSCode
 ```
 
 build.bat - build exe
