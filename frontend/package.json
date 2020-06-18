@@ -64,7 +64,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && cp build/index.html ../App/data/index.html",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
