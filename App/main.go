@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 
@@ -47,6 +48,12 @@ func main() {
 		c.JSON(200, gin.H{
 			"message": "pong",
 		})
+	})
+
+	r.GET("/app", func(c *gin.Context) {
+		file, err := pkger.Open("/data/index.html")
+		panicOnErr(err)
+		io.Copy(c.Writer, file)
 	})
 
 	r.Run() // localhost:8080

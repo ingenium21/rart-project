@@ -8,12 +8,11 @@ Steps.
 ```
 clone repo
 open commandline in repo root folder
-run install.bat
-Open App folder in VSCode to get Go intellisense and linting etc
+run install.bat if you haven't before
+run install_node.bat if you haven't before
+
+App- Go backend
+frontend- React frontend
 ```
 
-build.bat - build exe
-
-run.bat - run and build exe
-
-pkgr.bat - run pkger.exe to create pkged.go generated file
+App/run.bat run this when you edit App or frontend
