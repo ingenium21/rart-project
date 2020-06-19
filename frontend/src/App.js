@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default () => <div>Hello, World!</div>;
+import Pages from './components/routing';
+
+export default () => <Pages />;

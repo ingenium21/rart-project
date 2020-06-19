@@ -36,6 +36,12 @@ func getSettings() string {
 	return getStringFromFile(file, err)
 }
 
+func handleApp(c *gin.Context) {
+	file, err := pkger.Open("/data/index.html")
+	panicOnErr(err)
+	io.Copy(c.Writer, file)
+}
+
 func main() {
 	portableExe()
 	settings := getSettings()
@@ -50,11 +56,7 @@ func main() {
 		})
 	})
 
-	r.GET("/app", func(c *gin.Context) {
-		file, err := pkger.Open("/data/index.html")
-		panicOnErr(err)
-		io.Copy(c.Writer, file)
-	})
+	r.GET("/app/*catchAll", handleApp)
 
 	r.Run() // localhost:8080
 }
