@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default {
-  link: '/app/',
-  comp: () => {
-    return <h2>Homepage</h2>;
-  },
+export const Dir = '/app/';
+
+export const Homepage = () => {
+  return <h2>Homepage</h2>;
 };
