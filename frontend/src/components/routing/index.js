@@ -1,23 +1,21 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from '../navigation';
-import { Dir as HomepageLink, Homepage } from '../homepage';
-import { Dir as ContactLink, Contact } from '../contact';
-import { Dir as AboutLink, About } from '../about';
+import Homepage from '../homepage';
+import Contact from '../contact';
+import About from '../about';
 
 export default () => {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path={HomepageLink} component={Homepage} />
-        <Route path={AboutLink} component={About} />
-        <Route path={ContactLink} component={Contact} />
+        <Route exact path={Homepage.Dir} component={Homepage.Comp} />
+        <Route path={About.Dir} component={About.Comp} />
+        <Route path={Contact.Dir} component={Contact.Comp} />
       </Switch>
-      <Link to={AboutLink}>About!</Link>
-      <Link to={ContactLink}>Contact!</Link>
     </Router>
   );
 };

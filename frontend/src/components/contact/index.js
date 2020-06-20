@@ -1,7 +1,9 @@
 import React from 'react';
+import { AppLocation } from '../config';
 
-export const Dir = '/app/info/contact';
-
-export const Contact = () => {
-  return <h2>Contact</h2>;
+export default {
+  Dir: AppLocation('info/contact'),
+  Comp: () => {
+    return <h2>Contact</h2>;
+  },
 };

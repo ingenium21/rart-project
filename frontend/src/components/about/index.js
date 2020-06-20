@@ -1,30 +1,35 @@
 import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
+import { AppLocation } from '../config';
 
-export const Dir = '/app/info/about';
+export default {
+  Dir: AppLocation('info/about'),
+  get Sublink() {
+    return (sublink) => this.Dir + '/' + sublink;
+  },
+  get Comp() {
+    return () => {
+      const contributors = ['ash', 'ivan', 'ren', 'zlec', 'zork'];
 
-export const About = () => {
-  const sublink = (sublink) => Dir + '/' + sublink;
-
-  const contributors = ['ash', 'ivan', 'ren', 'zlec', 'zork'];
-
-  return (
-    <div>
-      <h2>About</h2>
-      <ul>
-        {contributors.map((e) => (
-          <li>
-            <Link to={sublink(e)}>{e}!</Link>
-          </li>
-        ))}
-      </ul>
-      <Switch>
-        {contributors.map((e) => (
-          <Route path={sublink(e)}>
-            <h3>{e}</h3>
-          </Route>
-        ))}
-      </Switch>
-    </div>
-  );
+      return (
+        <div>
+          <h2>About</h2>
+          <ul>
+            {contributors.map((e) => (
+              <li>
+                <Link to={this.Sublink(e)}>{e}!</Link>
+              </li>
+            ))}
+          </ul>
+          <Switch>
+            {contributors.map((e) => (
+              <Route path={this.Sublink(e)}>
+                <h3>{e}</h3>
+              </Route>
+            ))}
+          </Switch>
+        </div>
+      );
+    };
+  },
 };

@@ -1,7 +1,9 @@
 import React from 'react';
+import { AppLocation } from '../config';
 
-export const Dir = '/app/';
-
-export const Homepage = () => {
-  return <h2>Homepage</h2>;
+export default {
+  Dir: AppLocation(),
+  Comp: () => {
+    return <h2>Homepage</h2>;
+  },
 };
