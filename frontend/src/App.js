@@ -7,7 +7,7 @@ import ThemeStore from './themes/store';
 import styled from 'styled-components';
 
 const Page = styled.div`
-  background-color: ${(props) => props.theme.colors.test};
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
 export default () => {

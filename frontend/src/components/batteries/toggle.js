@@ -1,13 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const ratio = (val, size) => (val / 60) * size;
 
 const Switch = styled.label`
   position: relative;
   display: inline-block;
-  width: ${({ size }) => ratio(60, size)}px;
-  height: ${({ size }) => ratio(34, size)}px;
+
+  ${({ size }) =>
+    css`
+      width: ${ratio(60, size)}px;
+      height: ${ratio(34, size)}px;
+    `}
 `;
 
 const Slider = styled.span`
@@ -25,11 +29,14 @@ const Slider = styled.span`
   &::before {
     position: absolute;
     content: '';
-    height: ${({ size }) => ratio(26, size)}px;
-    width: ${({ size }) => ratio(26, size)}px;
-    left: ${({ size }) => ratio(4, size)}px;
-    bottom: ${({ size }) => ratio(4, size)}px;
-    background-color: white;
+    ${({ size, theme }) =>
+      css`
+        height: ${ratio(26, size)}px;
+        width: ${ratio(26, size)}px;
+        left: ${ratio(4, size)}px;
+        bottom: ${ratio(4, size)}px;
+        background-color: ${theme.colors.linktext};
+      `}
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
@@ -50,9 +57,12 @@ const Input = styled.input`
   }
 
   &:checked + ${Slider}:before {
-    -webkit-transform: translateX(${({ size }) => ratio(26, size)}px);
-    -ms-transform: translateX(${({ size }) => ratio(26, size)}px);
-    transform: translateX(${({ size }) => ratio(26, size)}px);
+    ${({ size }) =>
+      css`
+        -webkit-transform: translateX(${ratio(26, size)}px);
+        -ms-transform: translateX(${ratio(26, size)}px);
+        transform: translateX(${ratio(26, size)}px);
+      `}
   }
 `;
 

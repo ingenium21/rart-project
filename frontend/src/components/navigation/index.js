@@ -12,19 +12,23 @@ const Navbar = styled.nav`
 `;
 
 const Navlink = styled.div`
-  margin: 0 16px;
+  margin: 0 ${({ theme }) => theme.sizes.rem(1)};
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  font-size: ${(props) => props.theme.sizes.rem(1.5)};
 
   &:hover {
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+
     color: green;
   }
 `;
 
 const Logo = styled.h1`
-  margin: 0 16px;
+  margin: 0 ${({ theme }) => theme.sizes.rem(1)};
 `;
 
 const NewLink = (to, text, submenu) => (

@@ -15,15 +15,15 @@ export default {
         <div>
           <h2>About</h2>
           <ul>
-            {contributors.map((e) => (
-              <li>
+            {contributors.map((e, i) => (
+              <li key={`${i}`}>
                 <Link to={this.Sublink(e)}>{e}!</Link>
               </li>
             ))}
           </ul>
           <Switch>
-            {contributors.map((e) => (
-              <Route path={this.Sublink(e)}>
+            {contributors.map((e, i) => (
+              <Route key={`${i}`} path={this.Sublink(e)}>
                 <h3>{e}</h3>
               </Route>
             ))}
