@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import ThemeStore from '../../themes/store';
 import About from '../about';
+import { Toggle } from '../batteries/toggle';
 import Contact from '../contact';
 
 const Navbar = styled.nav`
@@ -32,10 +34,21 @@ const NewLink = (to, text, submenu) => (
   </Navlink>
 );
 
-export default () => (
-  <Navbar>
-    <Logo>L O G O</Logo>
-    {NewLink(About.Dir, 'About Us')}
-    {NewLink(Contact.Dir, 'Contact')}
-  </Navbar>
-);
+export default () => {
+  const toggleTheme = () => {
+    const themeAccess = ThemeStore.Accessor.theme;
+    const theme = ThemeStore.Store.get(themeAccess);
+    theme === 'light'
+      ? ThemeStore.Store.set(themeAccess, 'dark')
+      : ThemeStore.Store.set(themeAccess, 'light');
+  };
+
+  return (
+    <Navbar>
+      <Logo>L O G O</Logo>
+      {NewLink(About.Dir, 'About Us')}
+      {NewLink(Contact.Dir, 'Contact')}
+      <Toggle onToggle={toggleTheme} toggleSize={40} />
+    </Navbar>
+  );
+};
