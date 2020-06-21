@@ -5,10 +5,13 @@ import ThemeStore from '../../themes/store';
 import About from '../about';
 import { Toggle } from '../batteries/toggle';
 import Contact from '../contact';
+import LogoImage from '../../logo.png';
 
 const Navbar = styled.nav`
   display: flex;
   align-items: center;
+
+  padding: ${({ theme }) => theme.sizes.rem(0.5)} 0;
 `;
 
 const Navlink = styled.div`
@@ -31,6 +34,11 @@ const Logo = styled.h1`
   margin: 0 ${({ theme }) => theme.sizes.rem(1)};
 `;
 
+const StyledToggle = styled(Toggle)`
+  margin-left: auto;
+  margin-right: ${({ theme }) => theme.sizes.rem(1)};
+`;
+
 const NewLink = (to, text, submenu) => (
   <Navlink>
     <StyledLink to={to}>{text}</StyledLink>
@@ -49,10 +57,12 @@ export default () => {
 
   return (
     <Navbar>
-      <Logo>L O G O</Logo>
+      <Logo>
+        <img src={LogoImage} alt="L O G O" width="48px" height="48px" />
+      </Logo>
       {NewLink(About.Dir, 'About Us')}
       {NewLink(Contact.Dir, 'Contact')}
-      <Toggle onToggle={toggleTheme} toggleSize={40} />
+      <StyledToggle onToggle={toggleTheme} toggleSize={40} />
     </Navbar>
   );
 };

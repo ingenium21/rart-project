@@ -22,7 +22,6 @@ const Slider = styled.span`
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: ${({ size }) => ratio(34, size)}px;
 
@@ -37,7 +36,6 @@ const Slider = styled.span`
         bottom: ${ratio(4, size)}px;
         background-color: ${theme.colors.linktext};
       `}
-    -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -57,18 +55,13 @@ const Input = styled.input`
   }
 
   &:checked + ${Slider}:before {
-    ${({ size }) =>
-      css`
-        -webkit-transform: translateX(${ratio(26, size)}px);
-        -ms-transform: translateX(${ratio(26, size)}px);
-        transform: translateX(${ratio(26, size)}px);
-      `}
+    transform: translateX(${(props) => ratio(26, props.size)}px);
   }
 `;
 
-export const Toggle = ({ onToggle, toggleSize }) => {
+export const Toggle = ({ className, onToggle, toggleSize }) => {
   return (
-    <Switch size={toggleSize}>
+    <Switch className={className} size={toggleSize}>
       <Input type="checkbox" onClick={onToggle} size={toggleSize} />
       <Slider size={toggleSize} />
     </Switch>
