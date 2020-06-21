@@ -1,3 +1,5 @@
+import { lighten, darken } from 'polished';
+
 const palette = {
   colors: {
     navy: '#001F3F',
@@ -35,6 +37,7 @@ export const lightTheme = {
   name: 'light',
   colors: {
     background: palette.colors.silver,
+    navbg: darken(0.1, palette.colors.silver),
     text: palette.colors.black,
     linktext: palette.colors.blue,
   },
@@ -45,6 +48,7 @@ export const darkTheme = {
   name: 'dark',
   colors: {
     background: palette.colors.navy,
+    navbg: lighten(0.1, palette.colors.navy),
     text: palette.colors.silver,
     linktext: palette.colors.yellow,
   },

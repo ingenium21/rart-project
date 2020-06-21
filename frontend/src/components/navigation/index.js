@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import LogoImage from '../../logo.png';
 import ThemeStore from '../../themes/store';
 import About from '../about';
 import { Toggle } from '../batteries/toggle';
 import Contact from '../contact';
-import { lighten, darken } from 'polished';
 
 const Navbar = styled.nav`
   display: flex;
@@ -14,14 +13,8 @@ const Navbar = styled.nav`
 
   padding: ${({ theme }) => theme.sizes.s1} 0;
 
-  ${({ theme }) =>
-    theme.name === 'light'
-      ? css`
-          background-color: ${darken(0.1, theme.colors.background)};
-        `
-      : css`
-          background-color: ${lighten(0.1, theme.colors.background)};
-        `}
+  background-color: ${({ theme }) => theme.colors.navbg};
+  transition: 0.5s;
 `;
 
 const Navlink = styled.div`
