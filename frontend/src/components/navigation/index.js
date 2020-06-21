@@ -1,17 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import LogoImage from '../../logo.png';
 import ThemeStore from '../../themes/store';
 import About from '../about';
 import { Toggle } from '../batteries/toggle';
 import Contact from '../contact';
-import LogoImage from '../../logo.png';
+import { lighten, darken } from 'polished';
 
 const Navbar = styled.nav`
   display: flex;
   align-items: center;
 
   padding: ${({ theme }) => theme.sizes.s1} 0;
+
+  ${({ theme }) =>
+    theme.name === 'light'
+      ? css`
+          background-color: ${darken(0.1, theme.colors.background)};
+        `
+      : css`
+          background-color: ${lighten(0.1, theme.colors.background)};
+        `}
 `;
 
 const Navlink = styled.div`

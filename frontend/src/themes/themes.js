@@ -32,6 +32,7 @@ export const baseTheme = {
 
 export const lightTheme = {
   ...baseTheme,
+  name: 'light',
   colors: {
     background: palette.colors.silver,
     text: palette.colors.black,
@@ -41,6 +42,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   ...baseTheme,
+  name: 'dark',
   colors: {
     background: palette.colors.navy,
     text: palette.colors.silver,
