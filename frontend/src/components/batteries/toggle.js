@@ -59,10 +59,15 @@ const Input = styled.input`
   }
 `;
 
-export const Toggle = ({ className, onToggle, toggleSize }) => {
+export const Toggle = ({ className, onToggle, toggleSize, isChecked }) => {
   return (
     <Switch className={className} size={toggleSize}>
-      <Input type="checkbox" onClick={onToggle} size={toggleSize} />
+      <Input
+        type="checkbox"
+        defaultChecked={isChecked || false}
+        onClick={onToggle}
+        size={toggleSize}
+      />
       <Slider size={toggleSize} />
     </Switch>
   );

@@ -1,18 +1,22 @@
 import ClearX from 'clearx';
 import { constructAccessor } from '../helpers/accessor';
 
-let store = {
-  theme: 'light',
-  color: {
-    red: 'green',
-  },
+const getStore = () => {
+  const theme = localStorage.getItem('theme') || 'light';
+  return {
+    theme: theme,
+    color: {
+      red: 'green',
+    },
+  };
 };
 
-let Store = new ClearX(store);
+let Store = getStore();
+let ClearXStore = new ClearX(Store);
 
 export default {
-  Accessor: constructAccessor(store),
+  Accessor: constructAccessor(Store),
   get Store() {
-    return Store;
+    return ClearXStore;
   },
 };

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 const Page = styled.div`
   background-color: ${(props) => props.theme.colors.background};
   transition: 0.5s;
+  min-height: 100vh;
 `;
 
 export default () => {

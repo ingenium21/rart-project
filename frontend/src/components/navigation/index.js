@@ -50,10 +50,12 @@ export default () => {
   const toggleTheme = () => {
     const themeAccess = ThemeStore.Accessor.theme;
     const theme = ThemeStore.Store.get(themeAccess);
-    theme === 'light'
-      ? ThemeStore.Store.set(themeAccess, 'dark')
-      : ThemeStore.Store.set(themeAccess, 'light');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    ThemeStore.Store.set(themeAccess, newTheme);
+    localStorage.setItem('theme', newTheme);
   };
+  const initialTheme =
+    ThemeStore.Store.get(ThemeStore.Accessor.theme) || 'light';
 
   return (
     <Navbar>
@@ -62,7 +64,11 @@ export default () => {
       </Logo>
       {NewLink(About.Dir, 'About Us')}
       {NewLink(Contact.Dir, 'Contact')}
-      <StyledToggle onToggle={toggleTheme} toggleSize={40} />
+      <StyledToggle
+        onToggle={toggleTheme}
+        toggleSize={40}
+        isChecked={initialTheme === 'dark'}
+      />
     </Navbar>
   );
 };
