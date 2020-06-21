@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
     li,
     span {
       color: ${theme.colors.text};
-      font-size: ${theme.sizes.rem(1)};
+      font-size: ${theme.sizes.m};
     }
     a {
       color: ${theme.colors.linktext};
-      font-size: ${theme.sizes.rem(1)};
+      font-size: ${theme.sizes.m};
     }
   `}
 `;

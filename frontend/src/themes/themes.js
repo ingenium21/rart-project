@@ -20,9 +20,13 @@ const palette = {
   },
 };
 
+const rem = (s) => `${16 * s}px`;
+
 export const baseTheme = {
   sizes: {
-    rem: (s) => `${16 * s}px`,
+    s1: rem(0.5),
+    m: rem(1),
+    l1: rem(1.5),
   },
 };
 

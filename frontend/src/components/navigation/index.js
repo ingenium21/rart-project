@@ -11,16 +11,16 @@ const Navbar = styled.nav`
   display: flex;
   align-items: center;
 
-  padding: ${({ theme }) => theme.sizes.rem(0.5)} 0;
+  padding: ${({ theme }) => theme.sizes.s1} 0;
 `;
 
 const Navlink = styled.div`
-  margin: 0 ${({ theme }) => theme.sizes.rem(1)};
+  margin: 0 ${({ theme }) => theme.sizes.m};
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  font-size: ${(props) => props.theme.sizes.rem(1.5)};
+  font-size: ${(props) => props.theme.sizes.l1};
 
   &:hover {
     -webkit-transition: 0.4s;
@@ -31,12 +31,12 @@ const StyledLink = styled(Link)`
 `;
 
 const Logo = styled.h1`
-  margin: 0 ${({ theme }) => theme.sizes.rem(1)};
+  margin: 0 ${({ theme }) => theme.sizes.m};
 `;
 
 const StyledToggle = styled(Toggle)`
   margin-left: auto;
-  margin-right: ${({ theme }) => theme.sizes.rem(1)};
+  margin-right: ${({ theme }) => theme.sizes.m};
 `;
 
 const NewLink = (to, text, submenu) => (
