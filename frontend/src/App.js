@@ -5,6 +5,7 @@ import { GlobalStyle } from './themes/global';
 import { darkTheme, lightTheme } from './themes/themes';
 import ThemeStore from './themes/store';
 import styled from 'styled-components';
+import { ThemeList } from './themes/themes';
 
 const Page = styled.div`
   background-color: ${(props) => props.theme.colors.background};
@@ -16,7 +17,7 @@ export default () => {
   const [theme] = ThemeStore.Store.paths(ThemeStore.Accessor.theme).link(
     useState()
   );
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  const themeMode = theme === ThemeList.light ? lightTheme : darkTheme;
 
   return (
     <ThemeProvider theme={themeMode}>

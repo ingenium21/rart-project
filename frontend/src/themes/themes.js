@@ -32,9 +32,14 @@ export const baseTheme = {
   },
 };
 
+export const ThemeList = {
+  light: 'light',
+  dark: 'dark',
+};
+
 export const lightTheme = {
   ...baseTheme,
-  name: 'light',
+  name: ThemeList.light,
   colors: {
     background: palette.colors.silver,
     navbg: darken(0.1, palette.colors.silver),
@@ -45,7 +50,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   ...baseTheme,
-  name: 'dark',
+  name: ThemeList.dark,
   colors: {
     background: palette.colors.navy,
     navbg: lighten(0.1, palette.colors.navy),

@@ -6,6 +6,7 @@ import ThemeStore from '../../themes/store';
 import About from '../about';
 import { Toggle } from '../batteries/toggle';
 import Contact from '../contact';
+import { ThemeList } from '../../themes/themes';
 
 const Navbar = styled.nav`
   display: flex;
@@ -53,12 +54,13 @@ export default () => {
   const toggleTheme = () => {
     const themeAccess = ThemeStore.Accessor.theme;
     const theme = ThemeStore.Store.get(themeAccess);
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme =
+      theme === ThemeList.light ? ThemeList.dark : ThemeList.light;
     ThemeStore.Store.set(themeAccess, newTheme);
     localStorage.setItem('theme', newTheme);
   };
   const initialTheme =
-    ThemeStore.Store.get(ThemeStore.Accessor.theme) || 'light';
+    ThemeStore.Store.get(ThemeStore.Accessor.theme) || ThemeList.light;
 
   return (
     <Navbar>
