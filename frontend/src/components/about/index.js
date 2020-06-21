@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { AppLocation } from '../config';
 
 export default {
@@ -14,13 +14,6 @@ export default {
       return (
         <div>
           <h2>About</h2>
-          <ul>
-            {contributors.map((e, i) => (
-              <li key={`${i}`}>
-                <Link to={this.Sublink(e)}>{e}!</Link>
-              </li>
-            ))}
-          </ul>
           <Switch>
             {contributors.map((e, i) => (
               <Route key={`${i}`} path={this.Sublink(e)}>
