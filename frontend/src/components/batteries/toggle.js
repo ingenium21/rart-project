@@ -22,7 +22,7 @@ const Slider = styled.span`
     bottom: 0;
     background-color: #ccc;
     transition: 0.4s;
-    border-radius: ${({ size }) => ratio(34, size)}px;
+    border-radius: ${ratio(34, size)}px;
 
     &::before {
       position: absolute;
