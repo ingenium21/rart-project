@@ -38,14 +38,18 @@ func getSettings() string {
 }
 
 func handleApp(c *gin.Context) {
-	file, err := pkger.Open("/data/index.html")
+	file, err := pkger.Open("/data/index.html.gz")
 	panicOnErr(err)
+
+	c.Writer.Header().Set("Content-Type", "text/html; charset=UTF-8")
+	c.Writer.Header().Set("Content-Encoding", "gzip")
+
 	io.Copy(c.Writer, file)
 }
 
 func corsMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")

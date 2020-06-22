@@ -1,5 +1,5 @@
 CD ..\frontend
-COPY build\index.html ..\App\data\
+COPY build\index.html.gz ..\App\data\
 CD ..\App
 SET GOPATH=%CD%\..\gopath
 SET GOROOT=%CD%\..\go
