@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import LogoImage from '../../logo.png';
 import ThemeStore from '../../themes/store';
 import { ThemeList } from '../../themes/themes';
@@ -10,71 +10,85 @@ import Contact from '../contact';
 import { darken } from 'polished';
 
 const Navbar = styled.nav`
-  display: flex;
-  align-items: center;
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
 
-  padding: ${({ theme }) => theme.sizes.s1} 0;
+    padding: ${theme.sizes.s1} 0;
 
-  background-color: ${({ theme }) => theme.colors.navbg};
-  transition: 0.5s;
+    background-color: ${theme.colors.navbg};
+    transition: 0.5s;
+  `}
 `;
 
 const SubMenu = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 120px;
+  ${({ theme }) => css`
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 120px;
 
-  background-color: ${({ theme }) => darken(0.03, theme.colors.navbg)};
+    background-color: ${darken(0.03, theme.colors.navbg)};
+  `}
 `;
 
 const Navlink = styled.div`
-  margin: 0 ${({ theme }) => theme.sizes.m};
-  padding: ${({ theme }) => theme.sizes.m} 0;
+  ${({ theme }) => css`
+    margin: 0 ${theme.sizes.m};
+    padding: ${theme.sizes.m} 0;
 
-  position: relative;
+    position: relative;
 
-  ${SubMenu} {
-    display: none;
-  }
+    ${SubMenu} {
+      display: none;
+    }
 
-  &:hover ${SubMenu} {
-    display: block;
-  }
+    &:hover ${SubMenu} {
+      display: block;
+    }
+  `}
 `;
 
 const List = styled.ul``;
 
 const StyledLink = styled(Link)`
-  text-decoration: none;
-  font-size: ${(props) => props.theme.sizes.l1};
+  ${({ theme }) => css`
+    text-decoration: none;
+    font-size: ${theme.sizes.l1};
 
-  &:hover {
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+    &:hover {
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
 
-    color: green;
-  }
+      color: green;
+    }
+  `}
 `;
 
 const ListItem = styled.li`
-  width: 100%;
-  text-align: center;
-  padding: ${(props) => props.theme.sizes.s1} 0;
+  ${({ theme }) => css`
+    width: 100%;
+    text-align: center;
+    padding: ${theme.sizes.s1} 0;
 
-  ${StyledLink} {
-    font-size: ${(props) => props.theme.sizes.m};
-  }
+    ${StyledLink} {
+      font-size: ${theme.sizes.m};
+    }
+  `}
 `;
 
 const Logo = styled.h1`
-  margin: 0 ${({ theme }) => theme.sizes.m};
+  ${({ theme }) => css`
+    margin: 0 ${theme.sizes.m};
+  `}
 `;
 
 const StyledToggle = styled(Toggle)`
-  margin-left: auto;
-  margin-right: ${({ theme }) => theme.sizes.m};
+  ${({ theme }) => css`
+    margin-left: auto;
+    margin-right: ${theme.sizes.m};
+  `}
 `;
 
 const NewLink = ({ to, text, children }) => (
