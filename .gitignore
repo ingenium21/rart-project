@@ -6,6 +6,7 @@
 *.dylib
 *.sum
 *.zip
+*.mod
 
 # Test binary, built with `go test -c`
 *.test
