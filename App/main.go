@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"os"
@@ -36,25 +37,57 @@ func getSettings() string {
 	return getStringFromFile(file, err)
 }
 
+func handleApp(c *gin.Context) {
+	file, err := pkger.Open("/data/index.html.gz")
+	panicOnErr(err)
+
+	c.Writer.Header().Set("Content-Type", "text/html; charset=UTF-8")
+	c.Writer.Header().Set("Content-Encoding", "gzip")
+
+	io.Copy(c.Writer, file)
+}
+
+func corsMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+
+		c.Next()
+	}
+}
+
 func main() {
 	portableExe()
+
+	mode := flag.String("mode", "production", "Mode for the program")
+	flag.Parse()
+
 	settings := getSettings()
 
 	fmt.Println(settings)
 
 	r := gin.Default()
 
-	r.GET("/ping", func(c *gin.Context) {
+	fmt.Println(*mode)
+
+	if *mode == "develop" {
+		r.Use(corsMiddleware())
+	}
+
+	r.GET("/api/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
 		})
 	})
 
-	r.GET("/app", func(c *gin.Context) {
-		file, err := pkger.Open("/data/index.html")
-		panicOnErr(err)
-		io.Copy(c.Writer, file)
-	})
+	r.GET("/app/*catchAll", handleApp)
 
 	r.Run() // localhost:8080
 }

@@ -1,27 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import Pages from './components/routing';
+import { GlobalStyle } from './themes/global';
+import { darkTheme, lightTheme } from './themes/themes';
+import ThemeStore from './themes/store';
+import styled, { css } from 'styled-components';
+import { ThemeList } from './themes/themes';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          Now testing unified run.bat
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const Page = styled.div`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.background};
+    transition: 0.5s;
+    min-height: 100vh;
+  `}
+`;
+
+export default () => {
+  const [theme] = ThemeStore.Store.paths(ThemeStore.Accessor.theme).link(
+    useState()
   );
-}
+  const themeMode = theme === ThemeList.light ? lightTheme : darkTheme;
 
-export default App;
+  return (
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyle />
+      <Page>
+        <Pages />
+      </Page>
+    </ThemeProvider>
+  );
+};

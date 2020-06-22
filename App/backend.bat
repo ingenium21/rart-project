@@ -1,5 +1,4 @@
 CD ..\frontend
-CALL .\build.bat
 COPY build\index.html.gz ..\App\data\
 CD ..\App
 SET GOPATH=%CD%\..\gopath

@@ -6,9 +6,8 @@ MKDIR %GOPATH%
 SET GOEXE=%CD%\go\bin\go.exe
 SET GOROOT=%CD%\go
 SET GOBIN=%GOPATH%\bin
-SET PATH=%PATH%;%GOROOT%\bin
+SET PATH=%GOROOT%\bin;%PATH%
 cd App
-%GOEXE% mod init app
-%GOEXE% get -u github.com/gin-gonic/gin@v1.6.3
+%GOEXE% mod download
 %GOEXE% get github.com/markbates/pkger/cmd/pkger
 %GOPATH%\bin\pkger.exe
