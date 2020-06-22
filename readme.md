@@ -7,7 +7,7 @@ Steps.
 
 ```
 clone repo
-open commandline in repo root folder
+open commandline in repo root folder (MUST BE COMMAND LINE, CANNOT BE POWERSHELL)
 run install.bat if you haven't before
 run install_node.bat if you haven't before
 
