@@ -1,0 +1,21 @@
+{
+    "uuids" : [
+        {
+            "version": 1,
+            "uuid": "UUID of the ACL",
+            "name": "Name of the Access Control List",
+            "blacklist": ["Array", "of", "IP", "Addresses"],
+            "whitelist": ["Array", "of", "IP", "Addresses"],
+            "directories": [
+              {
+                "dir": "Location on your PC",
+                "name": "What the directory should be called"
+              },
+              {
+                "dir": "Location on your PC",
+                "name": "What the directory should be called"
+              }
+            ]
+          }
+    ]
+}
